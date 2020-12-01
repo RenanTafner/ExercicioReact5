@@ -1,28 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { MoviesService } from "../services/MoviesService";
+import { useMoviesServiceGetPopularMovies } from "../services/UseMoviesService";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
   addFavoriteMovie
 } from "../actions/favoriteMovieActions";
 
+
 export const MoviesList = () => {
 
   const dispatch = useDispatch();
   const favoriteMovies = useSelector((state) => state.favoriteMovies);
 
+  const movies = useMoviesServiceGetPopularMovies();
 
-  const [movies, setMovies] = useState({ data: { results: [] } });
+  console.log(movies);
 
-  const requestMovies = async () => {
-    const moviesResult = await MoviesService.getPopularMovies();
-    setMovies(moviesResult);
-  };
-
-  useEffect(() => {
-    requestMovies();
-  }, []);
+ var x = 0;
 
   return (
     <div>
@@ -33,7 +28,7 @@ export const MoviesList = () => {
 
       <h2>Movies List</h2>
     <ul>
-      {movies.data.results.map(movie =>
+      {movies.data.map(movie =>
       <li>
 
        <Link to={'/movies/' + movie.id}>{movie.title}</Link>

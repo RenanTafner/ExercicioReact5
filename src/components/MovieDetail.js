@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { MoviesService } from "../services/MoviesService";
+import { useMoviesServiceGetMovieById } from "../services/UseMoviesService";
+
 
 export const MovieDetail = (props) => {
-  const [movie, setMovie] = useState({data:undefined });
 
-  const requestMovie = async () => {
-    const movieResult = await MoviesService.getMovieById(props.match.params.id);
-    setMovie(movieResult.data);
-  };
-
-  useEffect(() => {
-    requestMovie();
-  }, []);
+  const movie = useMoviesServiceGetMovieById(props);
 
   return (
     <div>
