@@ -8,7 +8,6 @@ export const useMoviesServiceGetPopularMovies = () => {
 
     const requestMovies = async () => {
         const dataAux = await MoviesService.getPopularMovies();
-        console.log(dataAux);
         setMovies({data:dataAux.data.results});
       };
 
