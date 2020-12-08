@@ -1,5 +1,5 @@
 import {
-    ADD_FAVORITE_MOVIE,
+    ADD_FAVORITE_MOVIE, REMOVE_FAVORITE_MOVIE
   } from "../actions/favoriteMovieActions";
   
   // ESTADO INICIAL
@@ -28,6 +28,21 @@ import {
       };
 
     }
+
+    case REMOVE_FAVORITE_MOVIE:
+
+    var movieTitle = action.payload;
+
+    var index = state.favoriteMovies.indexOf(movieTitle);
+    if (index > -1) {
+      state.favoriteMovies.splice(index, 1);
+    }
+    alert('Movie removed from Favorite Movies List successfully.');
+    return  {
+      ...state,
+      favoriteMovies: state.favoriteMovies
+    };
+
       default:
         return state;
     }

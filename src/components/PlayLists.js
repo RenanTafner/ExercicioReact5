@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
+import {
+  removeFavoriteMovie
+} from "../actions/favoriteMovieActions";
 
 export const PlayLists = () => {
     const [favoriteMovies, setFavoriteMovies] = useState({favoriteMovies:undefined });
 
+    const dispatch = useDispatch();
     const favoriteMoviesStateReference = useSelector((state) => state.favoriteMovies);
 
     const requestFavoriteMovies= async () => {
@@ -26,6 +30,8 @@ export const PlayLists = () => {
             favoriteMoviesStateReference.favoriteMovies.map(movieTitle =>
           <li>
            {movieTitle}
+           <br></br>
+           <button onClick={() => dispatch(removeFavoriteMovie(movieTitle))}>Remove this movie from favorite movies list</button>
            <br></br>
            <br></br>
            </li>

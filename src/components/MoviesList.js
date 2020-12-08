@@ -15,8 +15,6 @@ export const MoviesList = () => {
 
   const movies = useMoviesServiceGetPopularMovies();
 
- var x = 0;
-
   return (
     <div>
 
