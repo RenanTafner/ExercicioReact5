@@ -8,3 +8,5 @@ Para rodar a aplicação, siga os passos abaixo:
 * Digite o comando "npm start" para iniciar a aplicação;
 
 * Acesse o link http://localhost:3000 para acessar a aplicação.
+
+* Link para o projeto já hospedado: https://exercicio-react5-ph749shzv.vercel.app/
